@@ -1,4 +1,5 @@
 import withDoc, { components } from '../../../lib/with-doc'
+import Now from '../../../components/now/now'
 import { arunoda } from '../../../lib/data/team'
 
 export const meta = {
@@ -9,17 +10,17 @@ export const meta = {
   editUrl: 'pages/docs/features/static-builds.md'
 }
 
-Deploying static apps with Now is very interesting because you don't need to pay for the computing resources. You just pay for the bandwidth, just like a CDN.
+Deploying static apps with <Now color="#000"/> is very interesting because you don't need to pay for the computing resources. You just pay for the bandwidth, just like a CDN.
 Still, you can do pretty cool stuff like custom public directories, URL rewrites, and many more thanks to [serve handlers](https://zeit.co/blog/new-static-deployments#new-features).
 
 Usually, you'll use a static site generator like Jekyll or even Next.js to build static HTML apps.
-In order to deploy your app with Now, you need to build it locally and deploy it.
+In order to deploy your app with <Now color="#000"/>, you need to build it locally and deploy it.
 
 This is not bad, but we can do better.
 
 ## Now Static Builds
 
-Now static builds are based on Docker.
+<Now color="#000"/> static builds are based on Docker.
 You can create a `Dockerfile` where you asked to build the static app and put it in a directory called `/public`.
 Then Now's build setup can extract that static app and deploy it for you.
 
