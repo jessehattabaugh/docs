@@ -16,7 +16,7 @@ With <Now color="#000"/>, you can build static apps when deploying using a `Dock
 This works incredibly well with our [GitHub integration](/github). You can use this method to build your static apps and then deploy them automatically for review or staging. For example, see this [pull request](https://github.com/zeit/now-static-build-starter/pull/1). For each and every push, you can access the built and deployed static app.
 
 ## Quickstart
-To build your static apps and deploy them on Now you'll need to build a `Dockerfile` that exports a static app to the `/public` directory. There must also be a `now.json` file with `"type": "static"` for Now to recognize that it should be built and deployed as a static app. Running `now` with this configuration will result in a static app built and deployed on Now.
+To build your static apps and deploy them on Now you'll need to create a `Dockerfile` that exports a static app to the `/public` directory. There must also be a `now.json` file with `"type": "static"` for Now to recognize that it should be built and deployed as a static app. Running `now` with this configuration will result in a static app built and deployed on Now.
 
 Now let's take a look at a more in-depth example.
 
