@@ -3,24 +3,15 @@ import Now from '../../../components/now/now'
 import { TerminalInput } from '../../../components/text/terminal'
 import Caption from '../../../components/text/caption'
 import { GenericLink } from '../../../components/text/link'
-import { arunoda } from '../../../lib/data/team'
 
 export const meta = {
   title: 'Static Builds',
   description: 'All you need to know about assigning domains to your Now deployments',
   date: '12 July 2018',
-  authors: [arunoda],
   editUrl: 'pages/docs/features/static-builds.md'
 }
 
-With [Now](/now), you can utilize your static apps with custom public directories, URL rewrites, and [much more](/docs/deployment-types/static).
-
-Taking into consideration the wealth of tools we have available to us today to build static sites like Jekyll, Gatsby, or even [Next.js](https://nextjs.org); it's easy to assume that a lot of developers build static sites with these tools.
-
-The problem has been that you first need to build locally and then deploy the static directory after.
-
-## The Solution
-With <Now color="#000"/>, you can build static apps when deploying. Using a `Dockerfile`, you can build a static app however you wish and then to output the content in a directory called `/public` for Now to upload after the build.
+With <Now color="#000"/>, you can build static apps when deploying using a `Dockerfile`. You can build a static app however you wish and then output the content in a directory called `/public` for Now to upload after the build.
 
 This works incredibly well with our [GitHub integration](/github). You can use this method to build your static apps and then deploy them automatically for review or staging. For example, see this [pull request](https://github.com/zeit/now-static-build-starter/pull/1). For each and every push, you can access the built and deployed static app.
 
