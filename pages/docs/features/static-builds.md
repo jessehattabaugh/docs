@@ -62,7 +62,7 @@ FROM mhart/alpine-node
 WORKDIR /usr/src
 
 # Install dependencies
-COPY package.json yarn.lock /app/
+COPY package.json yarn.lock ./
 RUN yarn
 
 # Copy the relevant files to the working directory
@@ -108,6 +108,23 @@ You can see the source code of the deployment here: https://github.com/now-examp
 
 > Make sure you have the latest version of the Now CLI to utilize static builds.<br/> You can get it from [zeit.co/download](https://zeit.co/download).
 
+### Whitelisting files for deployment with `.dockerignore`
+Now will recognize a `.dockerignore` file to allow or disallow files to be deployed from your build.
+
+Our recommendation would be to create a `.dockerignore` file and utilizing it as a whitelist.
+
+Let's take our first Next.js static app example. We can whitelist our `package.json`, `yarn.lock`, and `pages` directory with the following:
+
+```
+*
+!pages
+!yarn.lock
+!package.json
+```
+<Caption>A `.dockerignore` file whitelisting basic Next.js files and directories.</Caption>
+
+With this file in place, Now will only deploy the files and directories we have listed. This is great to stop any accidentally placed or created files from being uploaded by mistake. This is also great for making the build time shorter by uploading only necessary files!
+
 ## More Examples
 With Docker, the possibilities for what we can build as a static app are endless. Let's take a look at a few more examples of what you can do with a `Dockerfile` and a static Now deployment.
 
@@ -120,6 +137,9 @@ However, you can deploy this app inside Now without any issues. Here's the Docke
 
 ```
 FROM ruby:2.5-alpine
+
+# Set the default working directory
+WORKDIR /usr/src
 
 # Install some useful packages
 RUN apk --no-cache add
@@ -134,15 +154,12 @@ RUN apk --no-cache add
   libffi-dev
   cmake
 
-# Set the default working directory
-WORKDIR /usr/src
-
-# copy local files
-COPY . /usr/src
+# Copy local files
+COPY . .
 
 # Build and export the app
-RUN bundle install
-RUN bundle exec jekyll build --destination /public
+RUN bundle install && \
+  bundle exec jekyll build --destination /public
 ```
 <Caption>A `Dockerfile` that utilizes Ruby and other packages to build a static Jekyll app and export it to `/public`</Caption>
 
@@ -187,21 +204,5 @@ RUN echo "All tests passed!" > index.txt
 <Caption>A simple `Dockerfile` that runs a custom test script and prints the results to a text file ready to be deployed.</Caption>
 
 
-## Whitelisting files for deployment with `.dockerignore`
-Now will recognize a `.dockerignore` file to allow or disallow files to be deployed from your build.
-
-Our recommendation would be to create a `.dockerignore` file and utilizing it as a whitelist.
-
-Let's take our first Next.js static app example. We can whitelist our `package.json`, `yarn.lock`, and `pages` directory with the following:
-
-```
-*
-!pages
-!yarn.lock
-!package.json
-```
-<Caption>A `.dockerignore` file whitelisting basic Next.js files and directories.</Caption>
-
-With this file in place, Now will only deploy the files and directories we have listed. This is great to stop any accidentally placed or created files from being uploaded by mistake. This is also great for making the build time shorter by uploading only necessary files!
 
 export default withDoc({...meta})(({children}) => <>{children}</>)
