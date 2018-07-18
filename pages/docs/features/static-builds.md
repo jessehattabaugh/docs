@@ -13,7 +13,7 @@ export const meta = {
   editUrl: 'pages/docs/features/static-builds.md'
 }
 
-With [Now](/now), you can utilise your static apps with custom public directories, URL rewrites, and [much more](/docs/deployment-types/static).
+With [Now](/now), you can utilize your static apps with custom public directories, URL rewrites, and [much more](/docs/deployment-types/static).
 
 Taking into consideration the wealth of tools we have available to us today to build static sites like Jekyll, Gatsby, or even [Next.js](https://nextjs.org); it's easy to assume that a lot of developers build static sites with these tools.
 
@@ -22,20 +22,20 @@ The problem has been that you first need to build locally and then deploy the st
 ## The Solution
 With <Now color="#000"/>, you can build static apps when deploying. Using a `Dockerfile`, you can build a static app however you wish and then to output the content in a directory called `/public` for Now to upload after the build.
 
-This works incredibly well with our [GitHub integration](/github). You can use this method to build your static apps and then deploy them automatically for review or stagin. For example, see this [pull request](https://github.com/zeit/now-static-build-starter/pull/1). For each and every push, you can access the built and deployed static app.
+This works incredibly well with our [GitHub integration](/github). You can use this method to build your static apps and then deploy them automatically for review or staging. For example, see this [pull request](https://github.com/zeit/now-static-build-starter/pull/1). For each and every push, you can access the built and deployed static app.
 
 ## Quickstart
-To build your static apps and deploy them on Now you'll need to build a `Dockerfile` that exports a static app to the `/public` directory. There must also be a `now.json` file with `"type": "static"` for Now to recognise that it should be built and deployed as a static app. Running `now` with this configuration will result in a static app built and deployed on Now.
+To build your static apps and deploy them on Now you'll need to build a `Dockerfile` that exports a static app to the `/public` directory. There must also be a `now.json` file with `"type": "static"` for Now to recognize that it should be built and deployed as a static app. Running `now` with this configuration will result in a static app built and deployed on Now.
 
 Now let's take a look at a more in-depth example.
 
 ## An example of building and deploying a Next.js static app to Now
-For this example we are going to use a [simple Next.js app](https://github.com/zeit/now-static-build-starter) that exports as static HTML.
+For this example, we are going to use a [simple Next.js app](https://github.com/zeit/now-static-build-starter) that exports as static HTML.
 
 ### Step 1: Preparing the app for export
 First, let's look at how we'd normally export a static app with Next.js in a local environment. We can use the following commands in a terminal, from the app directory, to export static HTML files from your Next.js app.
 
-With Next.js we can create some npm scripts to help build and export our app. In this case we'll want the following:
+With Next.js we can create some npm scripts to help build and export our app. In this case, we'll want the following:
 ```
 "scripts": {
   "build": "next build",
@@ -80,7 +80,7 @@ If you don't want to copy all of your files to the working directory, [create a 
 
 ### Step 3: Configuring Now for Static deployments
 
-For Now to recognise our deployment as a static app, we'll need to mark it as a `static` type. To do this, we can add the following to the `now.json` configuration.
+For Now to recognize our deployment as a static app, we'll need to mark it as a `static` type. To do this, we can add the following to the `now.json` configuration.
 
 ```
 {
@@ -100,13 +100,13 @@ This will send the `Dockerfile` and the rest of our files to Now which will dete
 
 Once built and deployed, we can go to the deployment URL that Now gave us and see our static app live!
 
-The above example is available in the now-examples github org under this repository and it is subsequently deployed to the following URL: [nextjs-static-example.zeit.sh](https://nextjs-static-example.zeit.sh)
+The above example is deployed to the following URL: [nextjs-static-example.zeit.sh](https://nextjs-static-example.zeit.sh)
 
 _The above deployment is public so you can append `/_src` or `/_logs` to the URL to see the source of logs!_
 
 You can see the source code of the deployment here: https://github.com/now-examples/nextjs-static
 
-> Make sure you have the latest version of the Now CLI to utilise static builds.<br/> You can get it from [zeit.co/download](https://zeit.co/download).
+> Make sure you have the latest version of the Now CLI to utilize static builds.<br/> You can get it from [zeit.co/download](https://zeit.co/download).
 
 ## More Examples
 With Docker, the possibilities for what we can build as a static app are endless. Let's take a look at a few more examples of what you can do with a `Dockerfile` and a static Now deployment.
@@ -144,7 +144,7 @@ COPY . /usr/src
 RUN bundle install
 RUN bundle exec jekyll build --destination /public
 ```
-<Caption>A `Dockerfile` that utilises Ruby and other packages to build a static jekyll app and export it to `/public`</Caption>
+<Caption>A `Dockerfile` that utilizes Ruby and other packages to build a static Jekyll app and export it to `/public`</Caption>
 
 Take a look at the live example: https://zeit.co/zeit/now-jekyll/slxipttlce
 
@@ -166,7 +166,7 @@ RUN yarn build && mv build /public
 <Caption>An example `Dockerfile` for building a `create-react-app` project to the `/public` directory</Caption>
 
 ### Your own Continuous Integration
-Another fantastic use case of Docker for static builds comes by way of libraris and plugins at your disposal.
+Another fantastic use case of Docker for static builds comes by way of libraries and plugins at your disposal.
 
 Even if you're using GitHub and have nothing to deploy in your repository, you can use Now + GitHub and a `Dockerfile` to run your own tests for each pull request.
 
@@ -188,9 +188,9 @@ RUN echo "All tests passed!" > index.txt
 
 
 ## Whitelisting files for deployment with `.dockerignore`
-Now will recognise a `.dockerignore` file to allow or disallow files to be deployed from your build.
+Now will recognize a `.dockerignore` file to allow or disallow files to be deployed from your build.
 
-Our recommendation would be to create a `.dockerignore` file and utilising it as a whitelist.
+Our recommendation would be to create a `.dockerignore` file and utilizing it as a whitelist.
 
 Let's take our first Next.js static app example. We can whitelist our `package.json`, `yarn.lock`, and `pages` directory with the following:
 
